@@ -1,0 +1,8 @@
+{
+	"auth_required": false,
+	"exposed" : true,
+	"authentication": 
+	[
+		{ "method" : "Basic" }
+	]
+}

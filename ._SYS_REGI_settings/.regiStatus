@@ -1,0 +1,11 @@
+{
+"name":"shield.xs",
+"repoVersion":"37",
+"filenames":[{"filename":"shield\/xs\/project\/.project","sha1value":"2052525981.3872844794.3393779571.86494925.4059109664" ,"timest":"2012.12.13 19:12:47:47"},
+{"filename":"shield\/xs\/project\/.settings\/.jsdtscope","sha1value":"3092348289.1514320135.2527355164.1195235312.3359712394" ,"timest":"2012.12.13 19:10:54:54"},
+{"filename":"shield\/xs\/project\/.xsaccess","sha1value":"93365677.4279487143.2563946603.2948925538.1520798452" ,"timest":"2013.3.18 21:44:37:37"},
+{"filename":"shield\/xs\/project\/.xsapp","sha1value":"3661210606.1584089869.844480495.2506102928.2950170377" ,"timest":"2013.1.4 19:57:56:56"},
+{"filename":"shield\/xs\/project\/jquery-1.9.0.min.js","sha1value":"1131007288.2791694627.161937021.4047889152.2514398171" ,"timest":"2013.1.15 18:34:38:38"},
+{"filename":"shield\/xs\/project\/shield.xsjs","sha1value":"1163701967.2679763467.1989038186.1257905476.3779716109" ,"timest":"2013.3.18 21:48:32:32"},
+{"filename":"shield\/xs\/project\/shieldLoader.html","sha1value":"854338784.2231690874.1413191172.3420952137.2865638212" ,"timest":"2013.1.17 20:9:13:13"}],
+"conflicts":[]}

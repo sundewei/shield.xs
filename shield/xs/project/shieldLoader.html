@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<script language="javascript" src="jquery-1.9.0.min.js"></script>
+		<script language="javascript">
+			var tablePreparationStatus = "";
+			var loadingDone = false;
+			function prepareTableName(tableName) {
+				var newTableName = tableName.toUpperCase();				
+				if (newTableName.substr(0, 7) !== "SHIELD.") {
+					newTableName = "SHIELD." + newTableName;
+				}				
+				return newTableName;
+			}
+			function getXsShieldUrl(rsKey, tableName, firstBatch) {
+				tableName = prepareTableName(tableName);
+				return "http://LSPAL134.PAL.SAP.CORP:8010/shield/xs/project/shield.xsjs?prepareTable="+firstBatch+"&tableName="+tableName+"&rsKey="+rsKey;
+			}
+						
+			function getQueryStringParams(sParam) {
+				var sPageURL = window.location.search.substring(1);
+				var sURLVariables = sPageURL.split('&');
+				for (var i = 0; i < sURLVariables.length; i++) {
+					var sParameterName = sURLVariables[i].split('=');
+					if (sParameterName[0] == sParam) {
+						return sParameterName[1];
+					}
+				}
+			}
+			function insertBatch(rsKey, tableName, url) {				
+				var count = 0;				
+				jQuery.ajax({
+					url:    url,
+					success:function(result) {
+								count = result;
+							},
+					async:  false
+				});
+				return count;
+			}
+			
+			function loopInsertBatch(rsKey, tableName, url) {				
+				var count = 0;
+				while (true) {					
+					count = insertBatch(rsKey, tableName, url);
+					$('#loadingHeadline').append(count + "<br />");
+					if (count == 0) {
+						break;
+					}
+				}	
+			}
+			var rsKey = getQueryStringParams('rsKey');;
+			var tableName = getQueryStringParams('tableName');;
+			var opText = "";
+			if (rsKey && tableName) {
+				opText = "About to load table with rsKey: " + rsKey + ", tableName = " + tableName + "<br />";
+			}
+		</script>
+	</head>
+	<body>
+		<div id="loadingHeadline" />		
+		<script language="javascript">			
+			$('#loadingHeadline').html(opText);
+			insertBatch(rsKey, tableName, getXsShieldUrl(rsKey, tableName, true));
+			loopInsertBatch(rsKey, tableName, getXsShieldUrl(rsKey, tableName, false));
+		</script>
+	</body>
+</html>
